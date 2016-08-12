@@ -1,0 +1,55 @@
+{
+        "counter": {
+                "title": "Bitcoin {{PI}} on {{HOST}}",
+                "type": "io",
+                "legend": {
+                        "getnettotals_totalbytesrecv": {
+                                "name": "RX Bytes",
+                                "color": "0000ff"
+                        },
+                        "getnettotals_totalbytessent": {
+                                "name": "TX Bytes",
+                                "color": "00b000"
+                        }
+                }
+        },
+        "gauge": {
+                "title": "Bitcoin {{PI}} on {{HOST}}",
+                "type": "stacked",
+                "legend": {
+                        "getblock_size":{
+                                "name": "Blocksize",
+                                "color": "cc5500"
+                        },
+                        "getblock_height": {
+                                "name": "Blockheight",
+                                "color": "30a040"
+                        },
+                        "getblock_difficulty": {
+                                "name": "Last Difficulty",
+                                "color": "0080a0"
+                        },
+                        "getnetworkhashps_getnetworkhashps": {
+                                "name": "Network Hash/s",
+                                "color": "a000f0"
+                        },
+                        "getmempoolinfo_size": {
+                                "name": "Mempool TX",
+                                "color": "f08000"
+                        },
+                        "getmempoolinfo_bytes": {
+                                "name": "Mempool Bytes",
+                                "color": "40a080"
+                        },
+                        "getnetworkinfo_connections": {
+                                "name": "Connections",
+                                "color": "0000f0"
+                        },
+                        "estimatefee_estimatefee": {
+                                "name": "Estimatefee",
+                                "color": "aa3300"
+                        }
+                }
+        }
+
+}
