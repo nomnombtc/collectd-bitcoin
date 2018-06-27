@@ -45,29 +45,32 @@ def read_mempoolinfo():
     response = PROXY.getmempoolinfo()
     funcname = str("getmempoolinfo")
     for subkey in ['size', 'bytes']:
+        funccat = (str(funcname) + "_" + str(subkey))
         info = response[subkey]
         val = collectd.Values(type='gauge',
                               host='',
                               plugin='bitcoind',
                               time=0)
-        val.plugin_instance = funcname
+        val.plugin_instance = funccat
         val.type_instance = subkey
         val.dispatch(values=[info])
 
 
 def read_estimatesmartfee():
-    # Starting with v0.17 only estimatesmartfee call is supported
-    # Estimate cost to include the transaction within 6 blocks
+    # Starting with v0.17 only estimatesmartfee call is supported.
+    # Estimate cost to include the transaction within 6 blocks.
+    # We convert this value to Satoshis to make it an integer
     response = PROXY.estimatesmartfee(6)
     funcname = str("estimatesmartfee")
     feerate = response['feerate']
+    feerate_in_satoshis = feerate * 100000000
     val = collectd.Values(type='gauge',
                           host='',
                           plugin='bitcoind',
                           time=0)
     val.plugin_instance = funcname
     val.type_instance = funcname
-    val.dispatch(values=[feerate])
+    val.dispatch(values=[feerate_in_satoshis])
 
 
 def read_blockcount():
